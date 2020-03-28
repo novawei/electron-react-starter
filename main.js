@@ -1,3 +1,4 @@
+const path = require('path')
 const { app, BrowserWindow } = require('electron')
 
 let win = undefined
@@ -12,7 +13,11 @@ function createWindow() {
     }
   })
 
-  win.loadURL('http://localhost:3000')
+  if (process.env.NODE_ENV === 'production') {
+    win.loadURL(`file://${path.resolve(__dirname, 'dist', 'index.html')}`)
+  } else {
+    win.loadURL(`http://localhost:${process.env.PORT}`)
+  }
   win.maximize()
   win.webContents.openDevTools()
   win.show()
