@@ -9,6 +9,7 @@ const config = {
     app: path.resolve(__dirname, 'src', 'index.js')
   },
   output: {
+    publicPath: './',
     filename: '[name].[hash:8].js',
     path: path.resolve(__dirname, 'dist')
   },
