@@ -4,10 +4,21 @@
   "description": "electron with react+typescript",
   "main": "main.js",
   "scripts": {
-    "serve": "cross-env PORT=3000 webpack-dev-server --mode development --hot --progress --color",
+    "serve": "cross-env NODE_ENV=development PORT=3000 webpack-dev-server --mode development --hot --progress --color",
     "build": "webpack --mode production --progress --color",
     "package": "yarn build && electron-builder",
     "start": "electron ."
+  },
+  "build": {
+    "appId": "com.yourcompany.app",
+    "productName": "your app name",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "dist/**/*"
+    ]
   },
   "keywords": [
     "electron",

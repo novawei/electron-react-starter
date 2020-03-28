@@ -13,10 +13,10 @@ function createWindow() {
     }
   })
 
-  if (process.env.NODE_ENV === 'production') {
-    win.loadURL(`file://${path.resolve(__dirname, 'dist', 'index.html')}`)
-  } else {
+  if (process.env.NODE_ENV === 'development') {
     win.loadURL(`http://localhost:${process.env.PORT}`)
+  } else {
+    win.loadURL(`file://${path.join(__dirname, 'dist', 'index.html')}`)
   }
   win.maximize()
   win.webContents.openDevTools()
