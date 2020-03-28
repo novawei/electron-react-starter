@@ -89,6 +89,7 @@ const config = {
 
 module.exports = (env, argv) => {
   if (argv.mode === 'development') {
+    config.output.publicPath = '/'
     config.devServer = {
       port: process.env.PORT,
       open: false,
