@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
 import Board from './Board'
 import styles from './Game.less'
 
@@ -22,8 +24,8 @@ function calculateWinner(squares: ReadonlyArray<string>) {
   return null;
 }
 
-interface Props {
-
+interface Props extends Module1State {
+  val1: string
 }
 
 interface History {
@@ -36,7 +38,7 @@ interface State {
   xIsNext: boolean
 }
 
-export default class Game extends React.Component<Props, State> {
+class Game extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -101,6 +103,7 @@ export default class Game extends React.Component<Props, State> {
 
     return (
       <div className={styles.game}>
+        <span>{this.props.val1}</span>
         <div>
           <Board
             squares={current.squares}
@@ -115,3 +118,11 @@ export default class Game extends React.Component<Props, State> {
     );
   }
 }
+
+function mapStateToProps(state: AppState): Module1State {
+  return {
+    val1: state.module1.val1
+  }
+}
+
+export default connect(mapStateToProps)(Game)
