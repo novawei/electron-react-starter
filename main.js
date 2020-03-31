@@ -9,7 +9,7 @@ function createWindow() {
     height: 728,
     show: false,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
     }
   })
 
@@ -23,6 +23,7 @@ function createWindow() {
   win.show()
 }
 
+app.commandLine.appendSwitch('ignore-certificate-errors')
 app.whenReady().then(createWindow)
 
 app.on('window-all-closed', () => {
